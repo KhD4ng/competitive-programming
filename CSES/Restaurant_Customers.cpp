@@ -42,9 +42,23 @@ void solve() {
         cin >> x >> y;
         a[i] = mp(x, y);
     }
-    FOR(i, 1, n, 1) {
-        cout << a[i].F << ' ' << a[i].S << endl;
+    sort(a + 1, a + 1 + n,
+        [](const pii& a, const pii& b) {
+            if(a.S == b.S)
+                return a.F < b.F;
+            return a.S > b.S;
+        }
+    );
+    int ans = 0, cnt = 1;
+    FOR(i, 2, n, 1) {
+        if(a[i].S <= a[i-1].F) {
+            ans = max(ans, cnt);
+            cnt = 1;
+        } else {
+            cnt++;
+        }
     }
+    cout << max(ans, cnt);
 }
 
 int main() {
