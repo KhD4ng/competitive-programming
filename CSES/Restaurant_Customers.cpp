@@ -33,8 +33,18 @@ void setIO(string fileName = "") {
     }
 }
 //===================================================//
+pii a[2*N5];
 void solve() {
-
+    int n;
+    cin >> n;
+    FOR(i, 1, n, 1) {
+        int x, y;
+        cin >> x >> y;
+        a[i] = mp(x, y);
+    }
+    FOR(i, 1, n, 1) {
+        cout << a[i].F << ' ' << a[i].S << endl;
+    }
 }
 
 int main() {
