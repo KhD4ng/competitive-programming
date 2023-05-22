@@ -7,7 +7,7 @@ using namespace std;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 #define fastio ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-#define F first
+#define F first 
 #define S second
 #define mp make_pair
 #define pb push_back
