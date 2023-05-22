@@ -68,7 +68,7 @@ void solve() {
     sort(all(ans));
     for(int i = 0; i < sz(ans) - 1; i++)
         cout << ans[i] << ' ';
-    cout << ans[sz(ans)-1];
+    cout << ans[sz(ans)-1]; 
 }
 
 int main() {
