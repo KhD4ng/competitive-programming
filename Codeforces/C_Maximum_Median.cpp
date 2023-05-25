@@ -41,11 +41,31 @@ void Xuat(int a[], int n) {
 		cout << a[i] << ' ';
 }
 //===================================================//
+int a[2*N5];
+int bin(int l, int r, function<bool(int)> f) {
+	while(l < r) {
+		int m = l + (r - l + 1) / 2;
+		if(f(m)) {
+			l = m;
+		} else {
+			r = m - 1;
+		}
+	}
+	return l;
+}
 void solve() {
 	int n, k;
 	cin >> n >> k;
 	Nhap(a, n);
 	sort(a + 1, a + 1 + n);
+	//(n + 1) / 2;
+	cout << bin(1, 2e9, [&](int x) {
+		ll cnt = 0;
+		FOR(i, (n + 1) / 2, n, 1) {
+			cnt += max(0, x - a[i]);
+		}
+		return cnt <= k;
+	}) << '\n';
 }
 
 int main() {
