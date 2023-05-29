@@ -41,15 +41,43 @@ void Xuat(int a[], int n) {
         cout << a[i] << ' ';
 }
 //===================================================//
+int a[10001];
+
 void solve() {
     int n, t;
     cin >> n >> t;
     Nhap(a, n);
+    int l = 1, r = n;
+    int ans = n;
+    while(l <= r) {
+        int m = l + (r - l) / 2;
+        priority_queue<int> pq;
+        int time = 0, size = 0, j = 0;
+        while(size < m && j <= n) {
+            pq.push(-a[j]);
+            size++, j++;
+        }
+        while((int) pq.size()) {
+            time += max(0, -pq.top() - time);
+            pq.pop();
+            if(j <= n) {
+                pq.push(-(time + a[j]));
+                j++;
+            }
+        }
+        if(time <= t) { //1
+            ans = min(ans, m);
+            r = m - 1;
+        } else { //0
+            l = m + 1;
+        }
+    }
+    cout << ans;
 }
 
 int main() {
     fastio;
-    setIO("");
+    setIO("cowdance");
     int t;
     t = 1;
     //cin >> t;
